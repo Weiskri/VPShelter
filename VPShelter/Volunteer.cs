@@ -37,12 +37,12 @@ namespace VPShelter
             return EmployeeID;
         }
 
-        public string feedPets ()
+        public string FeedPets ()
         {
             return "All pets have been fed.";
         }
 
-        public string waterPets ()
+        public string WaterPets ()
         {
             return "All pets now have water.";
         }

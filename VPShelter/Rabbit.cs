@@ -26,5 +26,9 @@ namespace VPShelter
             RabbitBreed = rabbitBreed;
 
         }
+
+        // methods
+
+
     }
 }

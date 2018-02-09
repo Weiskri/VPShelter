@@ -16,6 +16,7 @@ namespace VPShelter
         private bool isThirsty;
         private bool isHungry;
         private bool isSick;
+        private bool isDirty;
 
         // properties
 
@@ -55,20 +56,26 @@ namespace VPShelter
             set { this.isSick = value; }
         }
 
+        public bool IsDirty
+        {
+            get { return this.isDirty; }
+            set { this.isSick = value; }
+        }
+
         // constructors
 
-        public VirtualPet ()
+        public VirtualPet()
         {
             // default constructor
         }
 
-        public VirtualPet (string name, string description)
+        public VirtualPet(string name, string description)
         {
             this.name = name;
             this.description = description;
         }
 
-        public VirtualPet (string name, string description, string disposition, bool isThirsty, bool isHungry, bool isSick)
+        public VirtualPet(string name, string description, string disposition, bool isThirsty, bool isHungry, bool isSick)
         {
             this.name = name;
             this.description = description;
@@ -80,10 +87,53 @@ namespace VPShelter
 
         // methods
 
-        public string ShowDescription (string description)
+        public void Tick()
         {
-            return description;
+            Random r = new Random();
+            List<bool> boolList = new List<bool>() { true, false };
+            int dirtyIndex = r.Next(boolList.Count);
+            isDirty = boolList[dirtyIndex];
+            int hungryIndex = r.Next(boolList.Count);
+            isHungry = boolList[hungryIndex];
+            int thirstyIndex = r.Next(boolList.Count);
+            isThirsty = boolList[thirstyIndex];
+            if ((isDirty == true) && ((isHungry == true)))
+            {
+                isSick = true;
+            }
+            else
+            {
+                isSick = false;
+            }
+
+            // initial disposition
+
+            if ((isDirty == true) && ((isSick == true)))
+            {
+                disposition = "angry";
+            }
+            else if ((isDirty == false) && ((isHungry == false) && (isThirsty == false)))
+            {
+                disposition = "happy";
+            }
+            else
+            {
+                disposition = "grumpy";
+            }
         }
 
+        // method to change the value of isHungry for each pet that is fed
+
+        public void HungerStatus ()
+        {
+            isHungry = false;
+        }
+
+        // method to change the value of isThirsty for each pet that is fed
+
+        public void ThirstStatus()
+        {
+            isThirsty = false;
+        }
     }
 }
