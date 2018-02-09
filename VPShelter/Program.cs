@@ -10,6 +10,66 @@ namespace VPShelter
     {
         static void Main(string[] args)
         {
+            // instantiating objects
+            Manager managerOne = new Manager("Kelly");
+            Volunteer volunteerOne = new Volunteer(30, "Lisa");
+            Volunteer volunteerTwo = new Volunteer(20, "Greg");
+            Volunteer volunteerThree = new Volunteer(15, "Eric");
+
+            Rabbit rabbitOne = new Rabbit("Continental Giant", "Oat hay");
+            Rabbit rabbitTwo = new Rabbit("Lionhead", "Timothy hay");
+            Rabbit rabbitThree = new Rabbit("Netherland dwarf", "Meadowgrass hay");
+            Rabbit rabbitFour = new Rabbit("Holland lop", "Timothy hay");
+
+            // setting ID numbers for employees
+            managerOne.EmployeeID = 15695;
+            volunteerOne.EmployeeID = 22506;
+            volunteerTwo.EmployeeID = 74513;
+            volunteerThree.EmployeeID = 39600;
+
+            // setting rabbit names
+
+            rabbitOne.Name = "Nietzsche";
+            rabbitTwo.Name = "Hegel";
+            rabbitThree.Name = "Simone";
+            rabbitFour.Name = "Kant";
+
+            Console.WriteLine("Welcome to the Small Pet Rescue!");
+            Console.WriteLine("To get started, please select what type of employee you are.");
+            Console.WriteLine("If you are a manager, press 1.");
+            Console.WriteLine("If you are a volunteer, press 2.");
+            int userChoice = int.Parse(Console.ReadLine());
+            if (userChoice == 1)
+            {
+                do
+                {
+                    Console.WriteLine("Manager menu:");
+                    Console.WriteLine("To view volunteer information, press 1.");
+                    Console.WriteLine("To clock in, press 2.");
+                    Console.WriteLine("To view the status of the shelter pets, press 3.");
+                    Console.WriteLine("To initiate the adoption process for a pet, press 4.");
+                    Console.WriteLine("To exit and return to the main menu, press 4.");
+                    userChoice = int.Parse(Console.ReadLine());
+                    switch (userChoice)
+                    {
+                        case 1:
+                            Console.WriteLine("Employee information:");
+                            Console.WriteLine("Name   ID   Hours");
+                            Console.WriteLine("-------------------");
+                            Console.WriteLine("{0} {1} {2}", volunteerOne.VolunteerName, volunteerOne.EmployeeID, volunteerOne.HoursAvailable);
+                            Console.WriteLine("{0} {1} {2}", volunteerTwo.VolunteerName, volunteerTwo.EmployeeID, volunteerTwo.HoursAvailable);
+                            Console.WriteLine("{0} {1} {2}", volunteerThree.VolunteerName, volunteerThree.EmployeeID, volunteerThree.HoursAvailable);
+                            break;
+                        case 2:
+                            Console.WriteLine(managerOne.ClockIn());
+                            break;
+                        case 3: 
+                            break;
+                    }
+
+                } while (userChoice != 4);
+
+            }
         }
     }
 }
