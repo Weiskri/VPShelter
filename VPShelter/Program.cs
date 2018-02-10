@@ -11,11 +11,11 @@ namespace VPShelter
         static void Main(string[] args)
         {
             // instantiating objects
-            Manager managerOne = new Manager("Kelly");
+            Manager managerOne = new Manager("Amelia");
             Volunteer volunteer = new Volunteer();
-            Volunteer volunteerOne = new Volunteer(30, "Lisa");
+            Volunteer volunteerOne = new Volunteer(30, "Abby");
             Volunteer volunteerTwo = new Volunteer(20, "Greg");
-            Volunteer volunteerThree = new Volunteer(15, "Eric");
+            Volunteer volunteerThree = new Volunteer(15, "Will");
 
             Rabbit rabbit = new Rabbit();
             Rabbit rabbitOne = new Rabbit("Continental Giant", "Oat hay");
@@ -37,10 +37,10 @@ namespace VPShelter
             rabbitFour.Name = "Kant";
 
             // setting rabbit tick values when menu is first opened
-            rabbitOne.Tick();
-            rabbitTwo.Tick();
-            rabbitThree.Tick();
-            rabbitFour.Tick();
+            rabbitOne.TickInitial();
+            rabbitTwo.TickInitial();
+            rabbitThree.TickInitial();
+            rabbitFour.TickInitial();
 
             // user main menu (initial greeting)
 
@@ -53,6 +53,7 @@ namespace VPShelter
             {
                 do
                 {
+                    Console.Clear();
                     Console.WriteLine("Manager menu:");
                     Console.WriteLine("To view volunteer information, press 1.");
                     Console.WriteLine("To clock in, press 2.");
@@ -69,6 +70,8 @@ namespace VPShelter
                             Console.WriteLine("{0} {1} {2}", volunteerOne.VolunteerName, volunteerOne.EmployeeID, volunteerOne.HoursAvailable);
                             Console.WriteLine("{0} {1} {2}", volunteerTwo.VolunteerName, volunteerTwo.EmployeeID, volunteerTwo.HoursAvailable);
                             Console.WriteLine("{0} {1} {2}", volunteerThree.VolunteerName, volunteerThree.EmployeeID, volunteerThree.HoursAvailable);
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                             break;
                         case 2:
                             Console.WriteLine(managerOne.ClockIn());
@@ -87,7 +90,8 @@ namespace VPShelter
                             Console.WriteLine("{0}      {1}       {2}      {3}     {4}   {5}  {6}", rabbitFour.Name, rabbitFour.RabbitBreed, rabbitFour.Disposition, rabbitFour.IsThirsty, rabbitFour.IsHungry, rabbitFour.IsSick, rabbitFour.IsDirty);
                             Console.WriteLine();
                             Console.WriteLine();
-
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                             break;
                         case 4:
                             Console.WriteLine("Which pet is the adopter interested in?");
@@ -95,19 +99,19 @@ namespace VPShelter
                             string adopterPet = Console.ReadLine().ToLower();
                             if (adopterPet == "nietzsche")
                             {
-                                Console.WriteLine("Nietzsche is a chestnut agouti 8 year Continental Giant.");
+                                Console.WriteLine("Nietzsche is a 8 year old male chestnut agouti Continental Giant.");
                             }
                             else if (adopterPet == "hegel")
                             {
-                                Console.WriteLine("Hegel is a 5 year old broken chocolate-colored Lionhead.");
+                                Console.WriteLine("Hegel is a 5 year old male broken chocolate Lionhead.");
                             }
                             else if (adopterPet == "simone")
                             {
-                                Console.WriteLine("Simone is a 2 year old silver Netherland Dwarf.");
+                                Console.WriteLine("Simone is a 2 year old female sable Netherland Dwarf.");
                             }
                             else
                             {
-                                Console.WriteLine("Kant is a 4 year old black Holland Lop.");
+                                Console.WriteLine("Kant is a 4 year old male black Holland Lop.");
                             }
 
                             Console.WriteLine();
@@ -119,6 +123,8 @@ namespace VPShelter
                             {
                                 Console.WriteLine("The pet has not been adopted.");
                             }
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                             break;
                     }
                 } while (userChoice != 5);
@@ -146,7 +152,8 @@ namespace VPShelter
                     Console.WriteLine("To refill the pets' water bottles, press 3.");
                     Console.WriteLine("To clean the pets' cages, press 4.");
                     Console.WriteLine("To take the pets to the vet, press 5.");
-                    Console.WriteLine("To exit and return to the main menu, press 6.");
+                    Console.WriteLine("To play with a pet, press 6.");
+                    Console.WriteLine("To exit and return to the main menu, press 7.");
                     userChoice = int.Parse(Console.ReadLine());
                     switch (userChoice)
                     {
@@ -159,6 +166,8 @@ namespace VPShelter
                             rabbitThree.HungerStatus();
                             rabbitFour.HungerStatus();
                             Console.WriteLine(volunteer.FeedPets());
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                             break;
                         case 3:
                             rabbitOne.ThirstStatus();
@@ -166,12 +175,52 @@ namespace VPShelter
                             rabbitThree.ThirstStatus();
                             rabbitFour.ThirstStatus();
                             Console.WriteLine(volunteer.WaterPets());
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                             break;
                         case 4:
+                            rabbitOne.CageStatus();
+                            rabbitTwo.CageStatus();
+                            rabbitThree.CageStatus();
+                            rabbitFour.CageStatus();
+                            Console.WriteLine(volunteer.CleanCages());
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
+                            break;
+                        case 5:
+                            rabbitOne.HealthStatus();
+                            rabbitTwo.HealthStatus();
+                            rabbitThree.HealthStatus();
+                            rabbitFour.HealthStatus();
+                            volunteer.Vet();
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
+                            break;
+                        case 6:
+                            Console.WriteLine("Which pet would you like play with?");
+                            string playPet = Console.ReadLine().ToLower();
+                            if (playPet == "nietzsche")
+                            {
+                                Console.WriteLine(volunteer.PlayWithPet(playPet, rabbitOne.IsHungry, rabbitOne.IsThirsty, rabbitOne.IsSick, rabbitOne.IsDirty));
+                            }
+                            else if (playPet == "hegel")
+                            {
+                                Console.WriteLine(volunteer.PlayWithPet(playPet, rabbitTwo.IsHungry, rabbitTwo.IsThirsty, rabbitTwo.IsSick, rabbitTwo.IsDirty));
+                            }
+                            else if (playPet == "simone")
+                            {
+                                Console.WriteLine(volunteer.PlayWithPet(playPet, rabbitThree.IsHungry, rabbitThree.IsThirsty, rabbitThree.IsSick, rabbitFour.IsDirty));
+                            }
+                            else if (playPet == "kant")
+                            {
+                                Console.WriteLine(volunteer.PlayWithPet(playPet, rabbitFour.IsHungry, rabbitFour.IsThirsty, rabbitFour.IsSick, rabbitFour.IsDirty));
+                            }
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadKey();
                             break;
                     }
 
-                } while (userChoice !=6);
+                } while (userChoice !=7);
             }
         }
     }

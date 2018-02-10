@@ -46,5 +46,27 @@ namespace VPShelter
         {
             return "All pets now have water.";
         }
+
+        public string CleanCages()
+        {
+            return "All pets' cages have been cleaned!";
+        }
+
+        public string Vet()
+        {
+            return "All pets are healthy!";
+        }
+
+        public string PlayWithPet(string petName, bool isHungry, bool isThirsty, bool isSick, bool isDirty)
+        {
+            if ((isHungry == true) || (isThirsty == true) || (isSick == true) || (isDirty == true))
+            {
+                return petName + " does not want to play.";
+            }
+            else
+            {
+                return petName + " is binkying!";
+            }
+        }
     }
 }

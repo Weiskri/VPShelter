@@ -87,7 +87,7 @@ namespace VPShelter
 
         // methods
 
-        public void Tick()
+        public void TickInitial()
         {
             Random r = new Random();
             List<bool> boolList = new List<bool>() { true, false };
@@ -127,6 +127,8 @@ namespace VPShelter
         public void HungerStatus ()
         {
             isHungry = false;
+            isThirsty = true;
+            isDirty = true;
         }
 
         // method to change the value of isThirsty for each pet that is fed
@@ -134,6 +136,20 @@ namespace VPShelter
         public void ThirstStatus()
         {
             isThirsty = false;
+        }
+
+        // method to change isDirty to false when cleaning
+
+        public void CageStatus() // this is really silly that I have to do this!
+        {
+            isDirty = false;
+        }
+
+        // method to change isSick to false when taking pets to vet
+
+        public void HealthStatus()
+        {
+            isSick = false;
         }
     }
 }
