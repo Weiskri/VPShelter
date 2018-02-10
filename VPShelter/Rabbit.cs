@@ -28,7 +28,5 @@ namespace VPShelter
         }
 
         // methods
-
-
     }
 }

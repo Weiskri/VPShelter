@@ -124,7 +124,7 @@ namespace VPShelter
 
         // method to change the value of isHungry for each pet that is fed
 
-        public void HungerStatus ()
+        public void HungerStatus()
         {
             isHungry = false;
             isThirsty = true;
@@ -151,5 +151,76 @@ namespace VPShelter
         {
             isSick = false;
         }
+
+        // another tick method to ensure that values properly update
+        public void TickReg(bool isHungry, bool isThirsty, bool isDirty, bool isSick)
+        {
+            if ((isDirty == true) && ((isHungry == true)))
+            {
+                isSick = true;
+            }
+            else
+            {
+                isSick = false;
+            }
+
+            // disposition
+
+            if ((isDirty == true) && ((isSick == true)))
+            {
+                disposition = "angry";
+            }
+            else if ((isDirty == false) && ((isHungry == false) && (isThirsty == false)))
+            {
+                disposition = "happy";
+            }
+            else
+            {
+                disposition = "grumpy";
+            }
+        }
+
+        public string FeedTreat(string petName, bool isThirsty)
+        {
+
+            isThirsty = true;
+            List<string> foodList = new List<string>() { "cilantro", "kale", "banana", "parsley", "basil", "romaine lettuce" };
+            Random r = new Random();
+            int foodIndex = r.Next(foodList.Count);
+            string food = foodList[foodIndex];
+            switch (petName)
+            {
+                case "nietzsche":
+                    return "Nietzsche refused the " + food + " and bit you.";
+                    break;
+
+                case "hegel":
+                    if ((food == "banana") || (food == "parsley") || (food == "romaine lettuce"))
+                    {
+                        return "Hegel ate the " + food + " happily.";
+                    }
+                    else
+                    {
+                        return "Hegel refused the " + food + " and thumped.";
+                    }
+                case "simone":
+                    return "Simone sniffed the " + food + " inquisitively and devoured it.";
+                    break;
+                case "kant":
+                    if (food == "banana")
+                    {
+                        return "Kant refused the banana.";
+                    }
+                    else
+                    {
+                        return "Kant ate the" + food + ".";
+                    }
+                default:
+                    return "The pet refused the food.";
+                    break;
+            }
+
+        }
+
     }
 }

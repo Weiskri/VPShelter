@@ -54,7 +54,7 @@ namespace VPShelter
 
         public string Vet()
         {
-            return "All pets are healthy!";
+            return "All pets are now healthy!";
         }
 
         public string PlayWithPet(string petName, bool isHungry, bool isThirsty, bool isSick, bool isDirty)
