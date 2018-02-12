@@ -47,11 +47,11 @@ namespace VPShelter
             int userChoice = 0;
             do {
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Title = "ASCII Art Rabbit";
                 string title = @"
 
-               (`.         ,-,        Welcome to the small pet rescue!
+               (`.         ,-,        Welcome to Singer's small animal rescue!
                `\ `.    ,;' /
                 \`. \ ,'/ .'
           __     `.\ Y /.'
@@ -69,6 +69,7 @@ namespace VPShelter
 
                 ";
                 Console.WriteLine(title);
+                Console.ResetColor();
                 Console.WriteLine("To get started, please select what type of employee you are:");
                 Console.WriteLine("If you are a manager, press 1.");
                 Console.WriteLine("If you are a volunteer, press 2.");
@@ -141,18 +142,22 @@ namespace VPShelter
                                 if (adopterPet == "nietzsche")
                                 {
                                     Console.WriteLine("Nietzsche is a 8 year old male chestnut agouti Continental Giant.");
+                                    Console.WriteLine("Nietzsche will do best as the only animal in a household. He has been known to bite others to show his dominance.");
                                 }
                                 else if (adopterPet == "hegel")
                                 {
                                     Console.WriteLine("Hegel is a 5 year old male broken chocolate Lionhead.");
+                                    Console.WriteLine("Hegel does not like other rabbits, enjoys attention on his own terms, and has a lot of \"bunitude.\"");
                                 }
                                 else if (adopterPet == "simone")
                                 {
                                     Console.WriteLine("Simone is a 2 year old female sable Netherland Dwarf.");
+                                    Console.WriteLine("Simone is a feisty, strong-willed, but friendly, rabbit.");
                                 }
                                 else
                                 {
                                     Console.WriteLine("Kant is a 4 year old male black Holland Lop.");
+                                    Console.WriteLine("Kant is a mellow rabbit, yet he is set in his ways.");
                                 }
 
                                 Console.WriteLine();
@@ -171,7 +176,7 @@ namespace VPShelter
                     } while (userChoice != 5);
 
                 }
-                else
+                else if (userChoice == 2)
                 {
                     do
                     {
@@ -301,6 +306,7 @@ namespace VPShelter
 
                     } while (userChoice != 8);
                 }
+                else { Console.WriteLine("Goodbye!"); }
 
             } while (userChoice !=3);
         }

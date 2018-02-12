@@ -30,7 +30,7 @@ namespace VPShelter
         // methods
         public override string ClockIn()
         {
-            return "Hello volunteer, you have uccessfully clocked in!";
+            return "Hello volunteer, you have successfully clocked in!";
         }
         public override double ShowID()
         {

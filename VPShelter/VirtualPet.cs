@@ -213,7 +213,7 @@ namespace VPShelter
                     }
                     else
                     {
-                        return "Kant ate the" + food + ".";
+                        return "Kant ate the " + food + ".";
                     }
                 default:
                     return "The pet refused the food.";
